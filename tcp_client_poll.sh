@@ -13,7 +13,6 @@ echo "reply_msg:"
 while read -r line; do
     echo "$line"
 done <&$fd
-echo "dumping any remaining data in the fd"
 echo "closing i/o channels..."
-exec $fd<&-
-exec $fd>&-
+exec {fd}<&-
+exec {fd}>&-
